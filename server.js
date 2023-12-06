@@ -44,7 +44,7 @@ const { generatePosters } = require('./posterController');
 app.post('/poster', generatePosters);
 
 app.get('/', (req, res) => {
-    res.status(200).contentType('text/plain').send('Server shaddy is healthy 😀🥳');
+    res.status(200).contentType('text/plain').send('Server shaddy Rep is healthy 😀🥳');
 });
 
 
