@@ -4,7 +4,7 @@ const Replicate = require("replicate");
 
 
 const replicate = new Replicate({
-  auth: 'r8_IdQtqhhC58xGXRjlk2QUa7vBI4Vxtnq4JLnPF',
+  auth: 'r8_Uc5huJ3221sFsZZzP33xKg6YdGTc7Cf41CVhz',
 });
 
 const generatePosters = async (req, res) => {
