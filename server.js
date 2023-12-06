@@ -16,7 +16,7 @@ admin.initializeApp({
     databaseURL: "https://creative-ai-364b0-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
 
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ['https://colorfuse-one.vercel.app'];
 
 const corsOptions = {
     origin: function (origin, callback) {
