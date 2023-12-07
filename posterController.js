@@ -4,7 +4,7 @@ const Replicate = require("replicate");
 
 
 const replicate = new Replicate({
-  auth: 'r8_Uc5huJ3221sFsZZzP33xKg6YdGTc7Cf41CVhz',
+  auth: process.env.REPLIT_TOKEN,
 });
 
 const generatePosters = async (req, res) => {
@@ -21,7 +21,7 @@ const generatePosters = async (req, res) => {
     ];
     // res.json({ success: true});
     try {
-        // Create an array of Promises for parallel execution
+   
         const replicatePromises = products.map(async (product) => {
             const output = await replicate.run(
                 "stability-ai/stable-diffusion:ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4",

@@ -3,12 +3,15 @@ const cors = require('cors');
 const { initializeApp } = require('firebase/app');
 const rateLimit = require('express-rate-limit');
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth');
+const { generatePosters } = require('./posterController');
+const { verifyToken } = require('./verifyToken');
 
 const admin = require('firebase-admin');
 const serviceAccount = require('./creative-ai-364b0-firebase-adminsdk-peeu1-e828829410.json');
 
 
 const app = express();
+app.enable('trust proxy');
 const PORT = process.env.PORT || 3001;
 
 admin.initializeApp({
@@ -23,14 +26,14 @@ const corsOptions = {
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
-            callback(new Error('Not allowed by CORS'));
+            callback(new Error('Not allowed! CORS Inavlid'));
         }
     },
 };
 const posterLimiter = rateLimit({
     windowMs: 60 * 60 * 1000, 
     max: 10, 
-    message: 'Too many requests from this user for poster endpoint, please try again later after 1 hr.',
+    message: 'Too many requests For poster generation, please try again later after 1 hr.',
 });
 
 app.use(cors(corsOptions));
@@ -39,9 +42,9 @@ app.use('/poster', posterLimiter);
 
 const fetch = require('node-fetch'); 
 
-const { generatePosters } = require('./posterController');
 
-app.post('/poster', generatePosters);
+
+app.post('/poster',verifyToken, generatePosters);
 
 app.get('/', (req, res) => {
     res.status(200).contentType('text/plain').send('Server shaddy Rep is healthy 😀🥳');
