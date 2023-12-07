@@ -24,7 +24,7 @@ const generatePosters = async (req, res) => {
    
         const replicatePromises = products.map(async (product) => {
             const output = await replicate.run(
-                "stability-ai/stable-diffusion:ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4",
+                "stability-ai/stable-diffusion:f178fa7a1ae43a9a9af01b833b9d2ecf97b1bcb0acfd2dc5dd04895e042863f1",
                 {
                     input: {
                         width: 768,
