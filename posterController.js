@@ -5,7 +5,7 @@ const Replicate = require("replicate");
 
 const replicate = new Replicate({
   auth: process.env.REPLIT_TOKEN,
-});
+}); 
 
 const generatePosters = async (req, res) => {
     const { title, location, time } = req.body;
