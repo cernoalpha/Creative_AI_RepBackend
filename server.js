@@ -19,24 +19,12 @@ admin.initializeApp({
     databaseURL: "https://creative-ai-364b0-default-rtdb.asia-southeast1.firebasedatabase.app",
 });
 
-// const allowedOrigins = ['https://color-fuse.vercel.app','https://color-fuse-git-main-cernoalpha.vercel.app','https://color-fuse-9j02db1va-cernoalpha.vercel.app','http://localhost:3000'];
-
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (!origin || allowedOrigins.includes(origin)) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed! CORS Inavlid'));
-//         }
-//     },
-// };
 const posterLimiter = rateLimit({
     windowMs: 60 * 60 * 1000, 
     max: 10, 
     message: 'Too many requests For poster generation, please try again later after 1 hr.',
 });
 
-// app.use(cors(corsOptions));
 app.use(cors());
 app.use(express.json());
 app.use('/poster', posterLimiter);
